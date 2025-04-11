@@ -1,0 +1,45 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+}
+
+.background-image {
+  background-image: url('http://localhost:3001/student.jpg'); /* Ensure library.jpg is in the public folder */
+  background-size: cover; /* Make the image fill the viewport */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  filter: brightness(100%); /* Keeps the image bright */
+}
+
+.App-header {
+  color: rgb(145, 145, 230); /* Ensures text is readable */
+  text-align: center; /* Center-aligns text */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adds shadow to make text stand out */
+  padding: 20px;
+}
+
+.button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: rgb(235, 241, 243); /* White text for contrast */
+  background-color: rgba(33, 32, 43, 0.8); /* Semi-transparent green buttons */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.button:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
