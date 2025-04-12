@@ -1,163 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 
-function Signin() {
-  const [formData, setFormData] = useState({
-    name: "",
-    accessNo: "",
-    registrationNo: "",
-    currentYear: "",
-    semester: "",
-    email: "",
-  });
-
-  // Handle form input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Signin Data Submitted:\n${JSON.stringify(formData, null, 2)}`);
-  };
+function SignIn() {
+  const history = useHistory();
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Signin Page</h1>
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "20px",
-          width: "300px",
-          margin: "0 auto",
-          textAlign: "left",
-        }}
-      >
-        {/* Name Input */}
-        <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            style={{
-              padding: "10px",
-              fontSize: "14px",
-              width: "100%",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-            }}
-          />
-        </div>
-
-        {/* Access Number Input */}
-        <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <label>Access Number:</label>
-          <input
-            type="text"
-            name="accessNo"
-            value={formData.accessNo}
-            onChange={handleChange}
-            required
-            style={{
-              padding: "10px",
-              fontSize: "14px",
-              width: "100%",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-            }}
-          />
-        </div>
-
-        {/* Registration Number Input */}
-        <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <label>Registration Number:</label>
-          <input
-            type="text"
-            name="registrationNo"
-            value={formData.registrationNo}
-            onChange={handleChange}
-            required
-            style={{
-              padding: "10px",
-              fontSize: "14px",
-              width: "100%",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-            }}
-          />
-        </div>
-
-        {/* Current Year Input */}
-        <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <label>Current Year:</label>
-          <input
-            type="text"
-            name="currentYear"
-            value={formData.currentYear}
-            onChange={handleChange}
-            required
-            style={{
-              padding: "10px",
-              fontSize: "14px",
-              width: "100%",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-            }}
-          />
-        </div>
-
-        {/* Semester Input */}
-        <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <label>Semester:</label>
-          <input
-            type="text"
-            name="semester"
-            value={formData.semester}
-            onChange={handleChange}
-            required
-            style={{
-              padding: "10px",
-              fontSize: "14px",
-              width: "100%",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-            }}
-          />
-        </div>
-
-        {/* Email Input */}
-        <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            style={{
-              padding: "10px",
-              fontSize: "14px",
-              width: "100%",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-            }}
-          />
-        </div>
-
-        {/* Submit Button */}
+    <div
+      style={{
+        textAlign: "center",
+        marginTop: "50px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      {/* Navigation Buttons Above */}
+      <div style={{ marginBottom: "20px" }}>
         <button
-          type="submit"
           style={{
+            margin: "10px",
             padding: "10px 20px",
             fontSize: "16px",
             backgroundColor: "#4CAF50",
@@ -166,12 +27,125 @@ function Signin() {
             borderRadius: "5px",
             cursor: "pointer",
           }}
+          onClick={() => history.push("/signup")}
         >
-          Submit
+          Go to Sign Up
+        </button>
+        <button
+          style={{
+            margin: "10px",
+            padding: "10px 20px",
+            fontSize: "16px",
+            backgroundColor: "#61dafb",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+          onClick={() => history.push("/")}
+        >
+          Go to Home
+        </button>
+      </div>
+
+      <h2>Sign In</h2>
+      <form
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundColor: "#fff",
+          padding: "20px",
+          borderRadius: "8px",
+          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+        }}
+      >
+        <label style={{ marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
+          Email:
+        </label>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          style={{
+            marginBottom: "15px",
+            padding: "10px",
+            width: "300px",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+          }}
+        />
+
+        <label style={{ marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
+          Password:
+        </label>
+        <input
+          type="password"
+          placeholder="Enter your password"
+          style={{
+            marginBottom: "20px",
+            padding: "10px",
+            width: "300px",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+          }}
+        />
+
+        <button
+          type="submit"
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#4CAF50",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            width: "100%",
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            alert("Signed in successfully!");
+            history.push("/");
+          }}
+        >
+          Sign In
         </button>
       </form>
+
+      {/* Navigation Buttons Below */}
+      <div style={{ marginTop: "20px" }}>
+        <button
+          style={{
+            margin: "10px",
+            padding: "10px 20px",
+            fontSize: "16px",
+            backgroundColor: "#4CAF50",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+          onClick={() => history.push("/signup")}
+        >
+          Go to Sign Up
+        </button>
+        <button
+          style={{
+            margin: "10px",
+            padding: "10px 20px",
+            fontSize: "16px",
+            backgroundColor: "#61dafb",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+          onClick={() => history.push("/")}
+        >
+          Go to Home
+        </button>
+      </div>
     </div>
   );
 }
 
-export default Signin;
+export default SignIn;

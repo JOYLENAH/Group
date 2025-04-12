@@ -9,7 +9,7 @@ body, html {
 }
 
 .background-image {
-  background-image: url('http://localhost:3001/student.jpg'); /* Ensure library.jpg is in the public folder */
+  background-image: url('http://localhost:3003/luxury.jpg'); /* Ensure library.jpg is in the public folder */
   background-size: cover; /* Make the image fill the viewport */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent tiling */
