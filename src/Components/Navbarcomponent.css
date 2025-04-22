@@ -1,0 +1,53 @@
+/* NavbarComponent.css */
+
+/* Main navbar container */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1rem;
+  }
+  
+  /* Brand/logo styling */
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: #ffffff !important;
+    margin-left: 0.5rem;
+  }
+  
+  /* Nav link base styling */
+  .nav-link {
+    font-size: 1rem;
+    color: #f8f9fa !important;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
+  }
+  
+  /* Hover effect for nav links */
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    color: #ffffff !important;
+  }
+  
+  /* Active nav link styling */
+  .nav-link.active {
+    background-color: #0d6efd;
+    color: #ffffff !important;
+    border-radius: 0.5rem;
+  }
+  
+  /* Responsive tweaks for smaller screens */
+  @media (max-width: 991px) {
+    .navbar-nav {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+  
+    .nav-link {
+      display: block;
+      margin: 0.25rem 0;
+      padding: 0.6rem 1rem;
+    }
+  }
+  

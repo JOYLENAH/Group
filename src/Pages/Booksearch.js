@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function BookSearch() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [searchResult, setSearchResult] = useState(null);
+  const history = useHistory(); // For navigation
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Here you can add logic to process or search for the book
     setSearchResult(`Searching for "${title}" by ${author}`);
   };
 
@@ -29,7 +30,6 @@ function BookSearch() {
         }}
         onSubmit={handleSearch}
       >
-        {/* Title Input */}
         <label style={{ marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
           Book Title:
         </label>
@@ -47,7 +47,6 @@ function BookSearch() {
           }}
         />
 
-        {/* Author Input */}
         <label style={{ marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
           Author Name:
         </label>
@@ -65,7 +64,6 @@ function BookSearch() {
           }}
         />
 
-        {/* Search Button */}
         <button
           type="submit"
           style={{
@@ -82,8 +80,24 @@ function BookSearch() {
         </button>
       </form>
 
-      {/* Display Search Result */}
       {searchResult && <p style={{ marginTop: "20px", fontSize: "16px", color: "#4CAF50" }}>{searchResult}</p>}
+
+      {/* Button to Navigate to Books Page */}
+      <button
+        style={{
+          marginTop: "20px",
+          padding: "10px 20px",
+          fontSize: "16px",
+          backgroundColor: "#007BFF",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+        onClick={() => history.push("/books")}
+      >
+        Go to Books
+      </button>
     </div>
   );
 }

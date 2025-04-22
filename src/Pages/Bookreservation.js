@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom"; // Import useHistory for navigation
 
 function BookReservation() {
   const [bookTitle, setBookTitle] = useState("");
   const [email, setEmail] = useState("");
   const [notificationMessage, setNotificationMessage] = useState("");
 
+  const history = useHistory(); // Navigation hook
+
   const handleReservation = (e) => {
     e.preventDefault();
-    // Logic to process the reservation can be added here
     setNotificationMessage(
       `You have successfully reserved "${bookTitle}". A notification will be sent to ${email} when it's available!`
     );
@@ -90,6 +92,22 @@ function BookReservation() {
           {notificationMessage}
         </p>
       )}
+
+      {/* Back to Home Button */}
+      <button
+        style={{
+          marginTop: "30px",
+          padding: "10px 20px",
+          backgroundColor: "#add8e6", // Light blue color
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+        onClick={() => history.push("/")} // Navigate back to homepage
+      >
+        Back to Home
+      </button>
     </div>
   );
 }

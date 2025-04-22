@@ -7,6 +7,8 @@ import SignUp from "./Pages/Signup"; // Separate component for Sign Up
 import SignInSignUp from "./Pages/SigninSignup";
 import BookSearch from "./Pages/Booksearch";
 import BookReservation from "./Pages/Bookreservation";
+import AdminDashboard from "./Components/AdminDasboard";
+import Books from "./Pages/Books";
 function App() {
   return (
     <BrowserRouter>
@@ -24,7 +26,11 @@ function App() {
         {/* Sign Up Route */}
         <Route path="/signup" component={SignUp} />
         <Route path="/book-search" component={BookSearch} />
-        <Route path="/book-reservation" component={BookReservation} /> 
+        <Route path="/book-reservation" component={BookReservation} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/admin-dashboard" component={AdminDashboard} />
+        <Route path="/books" component={Books} /> 
+ 
 
         {/* Add more routes here as needed */}
       </Switch>

@@ -1,80 +1,205 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"; // Using useHistory
 
 function Home() {
-  const [showOptions, setShowOptions] = useState(false); // State for the modal
-  const history = useHistory(); // For navigation
+  const [showOptions, setShowOptions] = useState(false);
+  const history = useHistory(); // Navigation hook
+
+  const user = { role: "admin" };
+
+  // Example reviews array
+  const reviews = [
+    { name: "Alice", text: "This app is amazing! Makes library management a breeze.", rating: 5 },
+    { name: "John", text: "Very intuitive and easy to use. Highly recommend it!", rating: 4 },
+    { name: "Sophia", text: "Great features but could use more customization options.", rating: 3 },
+  ];
 
   return (
     <div
       style={{
-        height: "100vh", // Full-screen height
-        width: "100vw", // Full-screen width
-        backgroundImage: "url('http://localhost:3003/luxury.jpg')", // Ensure the image path is correct
+        width: "100vw",
+        minHeight: "100vh", // Allow scrolling if content exceeds height
+        backgroundImage: "url('/FNEW.jpg')", // Adjusted image path
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center", // Center vertically
-        alignItems: "center", // Center horizontally
+        alignItems: "center",
+        overflowY: "scroll", // Enable scrolling
       }}
     >
-      <header style={{ textAlign: "center", color: "white" }}>
-        <h1>Welcome to My Library App</h1>
+      {/* Header */}
+      <header
+        style={{
+          textAlign: "center",
+          color: "white",
+          margin: "50px 0 30px", // Add vertical space
+        }}
+      >
+        <h1>PALLib</h1>
+        <p>PalLib welcome you all</p>
         <p>Explore, discover, and manage your library with ease!</p>
+      </header>
 
-        {/* Book Search Button */}
+      {/* Buttons Section */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "20px", // Add space between buttons
+          flexWrap: "wrap",
+          marginBottom: "50px", // Add space below buttons
+        }}
+      >
         <button
           style={{
-            margin: "10px",
             padding: "10px 20px",
             fontSize: "16px",
-            backgroundColor: "#61dafb",
+            backgroundColor: "#add8e6",
             color: "white",
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",
           }}
-          onClick={() => history.push("/book-search")} // Navigate to Book Search Page
+          onClick={() => history.push("/book-search")}
         >
           Book Search
         </button>
 
-        {/* Book Reservation Button */}
         <button
           style={{
-            margin: "10px",
             padding: "10px 20px",
             fontSize: "16px",
-            backgroundColor: "#486770",
+            backgroundColor: "#add8e6",
             color: "white",
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",
           }}
-          onClick={() => history.push("/book-reservation")} // Navigate to Book Reservation Page
+          onClick={() => history.push("/book-reservation")}
         >
           Book Reservation
         </button>
 
-        {/* Get Started Button */}
+        {user.role === "admin" && (
+          <button
+            style={{
+              padding: "15px 30px",
+              fontSize: "18px",
+              backgroundColor: "#add8e6",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+            onClick={() => history.push("/admin-dashboard")}
+          >
+            Admin Dashboard
+          </button>
+        )}
+
         <button
           style={{
-            marginTop: "20px",
             padding: "15px 30px",
             fontSize: "18px",
-            backgroundColor: "#4CAF50",
+            backgroundColor: "#add8e6",
             color: "white",
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",
           }}
-          onClick={() => setShowOptions(true)} // Show the modal
+          onClick={() => setShowOptions(true)}
         >
           Get Started
         </button>
-      </header>
+      </div>
+
+      {/* Reviews Section */}
+      <section
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.9)", // Semi-transparent white
+          padding: "40px 20px",
+          borderRadius: "10px",
+          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+          width: "90%",
+          maxWidth: "1200px", // Limit the width
+          marginBottom: "50px", // Add space at the bottom
+        }}
+      >
+        <h2 style={{ marginBottom: "30px", color: "#333", textAlign: "center" }}>What People Are Saying</h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center", // Center horizontally
+            gap: "30px", // Add spacing between review boxes
+            flexWrap: "wrap", // Wrap if screen width is smaller
+          }}
+        >
+          {reviews.map((review, index) => (
+            <div
+              key={index}
+              style={{
+                backgroundColor: "white",
+                padding: "20px",
+                borderRadius: "10px",
+                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+                textAlign: "left",
+                width: "300px", // Fixed box width
+              }}
+            >
+              <h4 style={{ margin: "5px 0", color: "#444" }}>{review.name}</h4>
+              <p style={{ margin: "10px 0", color: "#666" }}>{review.text}</p>
+              <p style={{ margin: "10px 0", color: "#FFD700" }}>⭐️ Rating: {review.rating}/5</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.8)", // Darker background
+          color: "white",
+          padding: "40px 20px", // Add padding for spacing
+          width: "100%",
+          textAlign: "center",
+        }}
+      >
+        <h2 style={{ marginBottom: "20px" }}>Contact Us</h2>
+        <p style={{ marginBottom: "10px" }}>We'd love to hear from you! Reach out to us through:</p>
+        <div style={{ display: "flex", justifyContent: "center", gap: "30px", flexWrap: "wrap" }}>
+          <a
+            href="mailto:support@mylibraryapp.com"
+            style={{ color: "#add8e6", textDecoration: "none" }}
+          >
+            Email: support@mylibraryapp.com
+          </a>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#add8e6", textDecoration: "none" }}
+          >
+            Facebook
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#add8e6", textDecoration: "none" }}
+          >
+            Twitter
+          </a>
+          <a
+            href="tel:+123456789"
+            style={{ color: "#add8e6", textDecoration: "none" }}
+          >
+            Phone: +1 (234) 567-890
+          </a>
+        </div>
+      </section>
 
       {/* Modal for Sign In / Sign Up Options */}
       {showOptions && (
@@ -85,7 +210,7 @@ function Home() {
             left: 0,
             height: "100vh",
             width: "100vw",
-            backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent overlay
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -106,13 +231,13 @@ function Home() {
                 margin: "10px",
                 padding: "10px 20px",
                 fontSize: "16px",
-                backgroundColor: "#4CAF50",
+                backgroundColor: "#add8e6",
                 color: "white",
                 border: "none",
                 borderRadius: "5px",
                 cursor: "pointer",
               }}
-              onClick={() => history.push("/signin")} // Navigate to Sign In Page
+              onClick={() => history.push("/signin")}
             >
               Sign In
             </button>
@@ -121,13 +246,13 @@ function Home() {
                 margin: "10px",
                 padding: "10px 20px",
                 fontSize: "16px",
-                backgroundColor: "#61dafb",
+                backgroundColor: "#add8e6",
                 color: "white",
                 border: "none",
                 borderRadius: "5px",
                 cursor: "pointer",
               }}
-              onClick={() => history.push("/signup")} // Navigate to Sign Up Page
+              onClick={() => history.push("/signup")}
             >
               Sign Up
             </button>
@@ -142,7 +267,7 @@ function Home() {
                 borderRadius: "5px",
                 cursor: "pointer",
               }}
-              onClick={() => setShowOptions(false)} // Close the modal
+              onClick={() => setShowOptions(false)}
             >
               Close
             </button>
